@@ -7,7 +7,7 @@ const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
 
 const postBlog = async (title: string | undefined, description: string | undefined) => {
-  const res = await fetch(`${API_ENDPOINT}/blog`, {
+  const res = await fetch(`${API_ENDPOINT}blog`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

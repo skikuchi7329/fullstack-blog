@@ -2,8 +2,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { PostType } from "@/types";
 
+const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
+
 async function fetchBlogs() {
-  const res = await fetch("http://localhost:3000/api/blog", {
+  const res = await fetch(`${API_ENDPOINT}blog`, {
     cache: "no-store",
   });
 

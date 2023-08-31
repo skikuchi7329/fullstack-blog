@@ -28,7 +28,7 @@ const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
 
 const deleteBlog = async ( id: number ) => {
-  const res = await fetch(`${API_ENDPOINT}/blog/${id}`, {
+  const res = await fetch(`${API_ENDPOINT}blog/${id}`, {
     method: "DELETE",
     headers: {
       "Content-Type": "application/json",
