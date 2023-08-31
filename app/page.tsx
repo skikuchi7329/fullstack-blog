@@ -29,7 +29,7 @@ export default async function Home() {
           href={"/blog/add"}
           className=" md:w-1/6 sm:w-2/4 text-center rounded-md p-2 m-auto bg-slate-300 font-semibold"
         >
-          Add New Blog 🚀
+          新規投稿
         </Link>
       </div>
 
@@ -47,12 +47,12 @@ export default async function Home() {
                 href={`/blog/edit/${post.id}`}
                 className="px-4 py-1 text-center text-xl bg-slate-900 rounded-md font-semibold text-slate-200"
               >
-                Edit
+                編集
               </Link>
             </div>
 
             <div className="mr-auto my-1">
-              <blockquote className="font-bold text-slate-700">
+              <blockquote className="text-slate-700">
                 {new Date(post.date).toDateString()}
               </blockquote>
             </div>
