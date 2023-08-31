@@ -24,6 +24,17 @@ const getBlogById = async ( id: number ) => {
   return data.post;
 };
 
+const deleteBlog = async ( id: number ) => {
+  const res = await fetch(`http://localhost:3000/api/blog/${id}`, {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+
+  return res.json();
+};
+
 const EditPost = ({params}: {params: {id: number } }) => {
   const router = useRouter();
   const titleRef = useRef<HTMLInputElement | null>(null);
@@ -32,10 +43,22 @@ const EditPost = ({params}: {params: {id: number } }) => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    toast.loading("編集中です...", {id: "1"});
+    toast.loading("編集中です...");
     await editBlog(titleRef.current?.value, descriptionRef.current?.value, params.id)
     toast.success("編集に成功しました", {id: "1"});
+    await toast.dismiss();
 
+
+
+    router.push("/");
+    router.refresh();
+  }
+
+  const handleDelete = async () => {
+
+    toast.loading("削除中です...", {id: "1"});
+    await deleteBlog(params.id);
+    toast.success("記事は削除されました", {id: "1"})
 
     router.push("/");
     router.refresh();
@@ -75,7 +98,7 @@ const EditPost = ({params}: {params: {id: number } }) => {
             <button className="font-semibold px-4 py-2 shadow-xl bg-slate-200 rounded-lg m-auto hover:bg-slate-100">
               更新
             </button>
-            <button className="ml-2 font-semibold px-4 py-2 shadow-xl bg-red-400 rounded-lg m-auto hover:bg-slate-100">
+            <button onClick={handleDelete} className="ml-2 font-semibold px-4 py-2 shadow-xl bg-red-400 rounded-lg m-auto hover:bg-slate-100">
               削除
             </button>
           </form>
