@@ -3,8 +3,11 @@ import { useRouter } from "next/navigation";
 import React, { useRef } from "react";
 import  { Toaster, toast } from 'react-hot-toast'
 
+const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
+
+
 const postBlog = async (title: string | undefined, description: string | undefined) => {
-  const res = await fetch("http://localhost:3000/api/blog", {
+  const res = await fetch(`${API_ENDPOINT}/blog`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
