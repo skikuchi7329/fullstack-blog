@@ -4,13 +4,15 @@ import { PostType } from "@/types";
 
 const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
+
 async function fetchBlogs() {
-  const res = await fetch(`${API_ENDPOINT}blog`, {
+  const res = await fetch(`${API_ENDPOINT}api/blog`, {
     cache: "no-store",
   });
 
   const data = await res.json();
 
+  console.log(data)
   return data.posts;
 }
 

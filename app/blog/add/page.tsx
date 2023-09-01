@@ -1,13 +1,15 @@
-'use client'
+"use client";
 import { useRouter } from "next/navigation";
 import React, { useRef } from "react";
-import  { Toaster, toast } from 'react-hot-toast'
+import { Toaster, toast } from "react-hot-toast";
 
 const API_ENDPOINT = process.env.NEXT_PUBLIC_API_ENDPOINT;
 
-
-const postBlog = async (title: string | undefined, description: string | undefined) => {
-  const res = await fetch(`${API_ENDPOINT}blog`, {
+const postBlog = async (
+  title: string | undefined,
+  description: string | undefined
+) => {
+  const res = await fetch(`${API_ENDPOINT}api/blog`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -18,7 +20,6 @@ const postBlog = async (title: string | undefined, description: string | undefin
   return res.json();
 };
 
-
 const PostBlog = () => {
   const router = useRouter();
   const titleRef = useRef<HTMLInputElement | null>(null);
@@ -27,14 +28,13 @@ const PostBlog = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    toast.loading("投稿中です...", {id: "1"});
-    await postBlog(titleRef.current?.value, descriptionRef.current?.value)
-    toast.success("投稿に成功しました", {id: "1"});
-
+    toast.loading("投稿中です...", { id: "1" });
+    await postBlog(titleRef.current?.value, descriptionRef.current?.value);
+    toast.success("投稿に成功しました", { id: "1" });
 
     router.push("/");
     router.refresh();
-  }
+  };
 
   return (
     <>
