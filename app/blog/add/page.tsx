@@ -9,7 +9,7 @@ const postBlog = async (
   title: string | undefined,
   description: string | undefined
 ) => {
-  const res = await fetch(`${API_ENDPOINT}api/blog`, {
+  const res = await fetch(`${API_ENDPOINT}/api/blog`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
