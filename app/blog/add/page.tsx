@@ -32,7 +32,7 @@ const PostBlog = () => {
     await postBlog(titleRef.current?.value, descriptionRef.current?.value);
     toast.success("投稿に成功しました", { id: "1" });
 
-    router.push("/");
+    router.push(`${API_ENDPOINT}`);
     router.refresh();
   };
 

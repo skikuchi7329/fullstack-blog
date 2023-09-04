@@ -66,7 +66,7 @@ const EditPost = ({ params }: { params: { id: number } }) => {
     await deleteBlog(params.id);
     toast.success("記事は削除されました", { id: "1" });
 
-    router.push("/");
+    router.push(`${API_ENDPOINT}`);
     router.refresh();
   };
 
